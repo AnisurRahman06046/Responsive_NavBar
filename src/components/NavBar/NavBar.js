@@ -13,10 +13,14 @@ const NavBar = () => {
   ];
   return (
     <nav className="bg-purple-300 w-full">
-      <div onClick={() => setOpen(!open)} className="h-6 w-6">
+      <div onClick={() => setOpen(!open)} className="h-6 w-6 md:hidden">
         {open ? <XMarkIcon></XMarkIcon> : <Bars3Icon></Bars3Icon>}
       </div>
-      <ul className="md:flex justify-center">
+      <ul
+        className={`bg-purple-300 w-full md:flex justify-center md:static duration-500 ease-in   absolute ${
+          open ? "top-6" : "top-[-120px]"
+        }`}
+      >
         {routes.map((route) => (
           <Link key={route.id} route={route}></Link>
         ))}
